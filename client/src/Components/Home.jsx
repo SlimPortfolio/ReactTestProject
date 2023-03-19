@@ -9,6 +9,10 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import LoginIcon from "@mui/icons-material/Login";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 function Home() {
     return (
@@ -33,7 +37,9 @@ function Home() {
                             </ImageListItem>
                         ))}
                     </ImageList> 
-                    <Typography textAlign= "center">Keep track of your events easily! Log in or create an account!</Typography>               
+                    <Typography textAlign= "center">Keep track of your events easily! Log in or create an account!</Typography>
+                    {/* Create a log in button Here */}
+                    <Button variant ="contained" size ="medium" endIcon={<KeyboardArrowRightIcon />}>Log In</Button>      
                 </Container>
             </Fragment>
                 

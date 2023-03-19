@@ -9,7 +9,8 @@ const TabBar = (props) => {
         <Fragment>
             <Tabs value={tabValue}>
                 <Tab value={0} component={Link} to="/" label="Home" />
-                <Tab value={1} component={Link} to="/events" label="Events" />
+                <Tab value={1} component={Link} to="/events" label="Events"/>
+                <Tab value={2} component={Link} to="/login" label="Log In" />
             </Tabs>
             <br/>
         </Fragment>
