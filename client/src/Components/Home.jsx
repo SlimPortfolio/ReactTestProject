@@ -39,7 +39,7 @@ function Home() {
                     </ImageList> 
                     <Typography textAlign= "center">Keep track of your events easily! Log in or create an account!</Typography>
                     {/* Create a log in button Here */}
-                    <Button variant ="contained" size ="medium" endIcon={<KeyboardArrowRightIcon />}>Log In</Button>      
+                    <Button variant ="contained" size ="medium" endIcon={<KeyboardArrowRightIcon />} href="/login">Log In</Button>      
                 </Container>
             </Fragment>
                 

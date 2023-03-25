@@ -11,9 +11,23 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import InputAdornment from '@mui/material/InputAdornment';
+import FormHelperText from '@mui/material/FormHelperText';
+import FormControl from '@mui/material/FormControl';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
 
 function Login() {
+    const [showPassword, setShowPassword] = React.useState(false);
+
+    const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
+    };
+
     return (
         <div>
             <Fragment>
@@ -34,12 +48,39 @@ function Login() {
                         noValidate
                         autoComplete="off"
                     >
-                        <h1>Log-In</h1>
-                        <TextField id="username" label="Username" variant="outlined" required="true"/>
+                        <h1>Log-In</h1>                        
+                        <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+                            <InputLabel htmlFor="username">Username</InputLabel>
+                            <OutlinedInput
+                                id="username"
+                                type={showPassword ? 'text' : 'password'}
+                                label="Username"
+                            />
+                        </FormControl>
                         <br></br>
-                        <TextField id="password" label="Password" variant="outlined" required="true"/>
+                        <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+                            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                            <OutlinedInput
+                                id="outlined-adornment-password"
+                                type={showPassword ? 'text' : 'password'}
+                                endAdornment={
+                                <InputAdornment position="end">
+                                    <IconButton
+                                    aria-label="toggle password visibility"
+                                    onClick={handleClickShowPassword}
+                                    onMouseDown={handleMouseDownPassword}
+                                    edge="end"
+                                    >
+                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                    </IconButton>
+                                </InputAdornment>
+                                }
+                                label="Password"
+                            />
+                        </FormControl>
                         <br></br>
                         <Button variant ="contained" size ="small">Submit</Button> 
+
                     </Box>           
                 </Container>
             </Fragment>
