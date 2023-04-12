@@ -1,0 +1,7 @@
+4/11/23
+
+
+
+FUTURE PLANS:
+-Create 1 Card with a description and title
+-add dropdown for more informatino to card.
