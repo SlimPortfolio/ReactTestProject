@@ -20,12 +20,15 @@ function Events() {
                 </Container>
             </Fragment>
             <Fragment>
-                {data.map((item) => (
-                    <EventCard 
-                        title={item.title}
-                        description={item.description}
-                        />
-                ))}
+                <br></br>
+                <Container align="center">
+                    {data.map((item) => (
+                        <EventCard 
+                            title={item.title}
+                            description={item.description}
+                            />
+                    ))}
+                </Container>
             </Fragment>    
         </div>
     );
