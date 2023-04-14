@@ -53,7 +53,6 @@ function Login() {
                             <InputLabel htmlFor="username">Username</InputLabel>
                             <OutlinedInput
                                 id="username"
-                                type={showPassword ? 'text' : 'password'}
                                 label="Username"
                             />
                         </FormControl>
