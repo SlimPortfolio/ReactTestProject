@@ -14,13 +14,12 @@ function Events() {
                 </header>
             </Fragment>
             <Fragment>
-                <Container maxWidth="md">
+                <Container maxWidth="md" style={{marginBottom:15}}>
                     <Typography textAlign= "center" variant ="h1">Events List</Typography>
       
                 </Container>
             </Fragment>
             <Fragment>
-                <br></br>
                 <Container align="center">
                     {data.map((item) => (
                         <EventCard 
