@@ -5,5 +5,5 @@ SELECT JSON_ARRAYAGG(JSON_OBJECT('favorite song', favorite_song,'name', name )) 
 ^^^potential method for pulling a JSON Array from the database.
 
 FUTURE PLANS:
--Create 1 Card with a description and title
--add dropdown for more informatino to card.
+-pull data from a test database in JSON format to be visible on the frontend.
+-.env variables instead of hard-coded
