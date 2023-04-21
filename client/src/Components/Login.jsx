@@ -39,7 +39,7 @@ function Login() {
 
             <Fragment>
                 <CssBaseline />
-                <Container maxWidth="sm">
+                <Container align="center">
                     <Box
                         component="form"
                         sx={{
@@ -78,7 +78,7 @@ function Login() {
                             />
                         </FormControl>
                         <br></br>
-                        <Button variant ="contained" size ="small">Submit</Button> 
+                        <Button variant ="contained" size ="medium">Submit</Button> 
 
                     </Box>           
                 </Container>
