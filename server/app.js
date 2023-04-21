@@ -11,7 +11,7 @@ app.use(express.json())
 
 app.get("/", async (req, res) => {
     const events = await getData()
-    console.log(events)
+    res.send(events)
 })
 
 app.listen(3001, () => {
