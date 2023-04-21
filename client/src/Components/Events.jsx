@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import TabBar from "./TabBar";
 import EventCard from "./EventCard";
 import { Container, Typography } from "@mui/material";
+import CreateEvent from './CreateEvent';
 
 
 function Events() {
@@ -21,12 +22,15 @@ function Events() {
             </Fragment>
             <Fragment>
                 <Container align="center">
-                    {data.map((item) => (
-                        <EventCard 
-                            title={item.title}
-                            description={item.description}
-                            />
-                    ))}
+                <CreateEvent />
+                    <Container style={{marginTop:15}}>
+                        {data.map((item) => (
+                            <EventCard 
+                                title={item.title}
+                                description={item.description}
+                                />
+                        ))}
+                    </Container>
                 </Container>
             </Fragment>    
         </div>
