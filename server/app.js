@@ -4,13 +4,10 @@ import {getData} from './database.js'
 const app = express()
 app.use(express.json())
 
-// app.post("/events", async (req, res) => {
-//     const {title, description } = req.body
-//     const events = await getData()
-// })
-
 app.get("/", async (req, res) => {
     const events = await getData()
+    //responding to get request by allowing localhost:3000 to access API, and also sending events variable over
+    res.header("Access-Control-Allow-Origin","http://localhost:3000");
     res.send(events)
 })
 

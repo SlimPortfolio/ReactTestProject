@@ -15,5 +15,5 @@ export async function getData() {
     return rows
 }
 
-const result = await getData()
+const result = {"title":"Basketball Game","description":"Watch David take down the Gilstads"}
 console.log(result)

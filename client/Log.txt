@@ -4,6 +4,9 @@
 SELECT JSON_ARRAYAGG(JSON_OBJECT('favorite song', favorite_song,'name', name )) from clients;
 ^^^potential method for pulling a JSON Array from the database.
 
+4/22/23
+We want to use "UseEffect" if there's something we want to bring in right when the page loads
+
 FUTURE PLANS:
 -pull data from a test database in JSON format to be visible on the frontend.
 -.env variables instead of hard-coded

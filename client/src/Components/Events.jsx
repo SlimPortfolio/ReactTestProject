@@ -1,12 +1,25 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import TabBar from "./TabBar";
 import EventCard from "./EventCard";
 import { Container, Typography } from "@mui/material";
 import CreateEvent from './CreateEvent';
-
+import axios from 'axios';
 
 function Events() {
-    const data = [{"title":"Basketball Game","description":"Watch David take down the Gilstads"},{"title":"Sam Yang Birthday Party","description":"Dude's 12"}];
+    
+    //creating a use state that can be updated
+    const [info, getInfo] = useState([]);
+    const data = info;
+
+    //running usestate to access data from API endpoint
+    useEffect(() => {
+        ;(async () => {
+            const result = await axios.get('http://localhost:3001')
+            getInfo(result.data);
+        })()
+    }, [])
+
+    
     return (
         <div>
             <Fragment>
@@ -26,8 +39,8 @@ function Events() {
                     <Container style={{marginTop:15}}>
                         {data.map((item) => (
                             <EventCard 
-                                title={item.title}
-                                description={item.description}
+                                title={item.event_title}
+                                description={item.event_description}
                                 />
                         ))}
                     </Container>
