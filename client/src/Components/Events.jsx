@@ -6,54 +6,19 @@ import CreateEvent from './CreateEvent';
 import axios from 'axios';
 
 function Events() {
-    const [info, getInfo] = useState([]);
     
+    //creating a use state that can be updated
+    const [info, getInfo] = useState([]);
+    const data = info;
+
+    //running usestate to access data from API endpoint
     useEffect(() => {
         ;(async () => {
             const result = await axios.get('http://localhost:3001')
             getInfo(result.data);
-            console.log(result.data)
         })()
     }, [])
-    
 
-    // axios.get('localhost:3001')
-    //     .then((response) => {
-    //         const data = response.data
-    //     })
-    const data = info;
-    // const data = [{"title":"Basketball Game","description":"Watch David take down the Gilstads"},{"title":"Sam Yang Birthday Party","description":"Dude's 12"}];
-    console.log([{"title":"Basketball Game","description":"Watch David take down the Gilstads"},{"title":"Sam Yang Birthday Party","description":"Dude's 12"}]);
-    
-    
-    // axios.get('https://api.quotable.io/random')
-    
-    // const [data, getData] = useState([]);
-
-    // const getAllData = () => {
-    //     axios.get('http://localhost:3001')
-    //     .then(response => {
-    //         const allData = response.data;
-    //         getData(allData);
-    //     }).catch(err => {
-    //         console.log(err)
-    //     });
-    // }
-
-    // getAllData();
-        
-
-    // async function getUserData() {
-    //     try {
-    //         const response = await axios.get("http://localhost:3001");
-    //         console.log(response);
-    //     }
-    //     catch (error) {
-    //         console.log("error");
-    //     }
-    // }
-
-    // getUserData();
     
     return (
         <div>
