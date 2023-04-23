@@ -14,6 +14,3 @@ export async function getData() {
     const [rows] = await pool.query("SELECT * FROM event_data")
     return rows
 }
-
-const result = {"title":"Basketball Game","description":"Watch David take down the Gilstads"}
-console.log(result)
