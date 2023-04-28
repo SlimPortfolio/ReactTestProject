@@ -15,6 +15,14 @@ export async function getData() {
     return rows
 }
 
+const connection = mysql.createConnection({
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE
+}).promise()
+
 export async function postData() {
-    await pool
+    connection.query("INSERT INTO event_data(event_title, event_description)  VALUES ('Sean Kingston Concert', 'Mr. Kingston is back to rock the house to the ground')") 
+    console.log("post to db successful")   
 }

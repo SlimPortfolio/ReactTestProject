@@ -23,7 +23,7 @@ function Events() {
     function postData() {
         //for axios.post, authorization header can be passed in as third arg.
         axios.post(
-            "https://jsonplaceholder.typicode.com/posts", 
+            "http://localhost:3001/post", 
             {
                 name: "testing123",
             },
@@ -33,7 +33,7 @@ function Events() {
                 }   
             }
         )
-        .then(res => console.log(res)).catch(err => console.log(err))
+        .then(res => console.log("Result: " + res.data)).catch(err => console.log(err))
 
     }
 
