@@ -25,7 +25,8 @@ function Events() {
         axios.post(
             "http://localhost:3001/post", 
             {
-                name: "testing123",
+                event_title: "Good Morning America",
+                event_description: "Everyone's Favorite News show!",
             },
             {
                 headers: {
