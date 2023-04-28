@@ -8,18 +8,36 @@ import axios from 'axios';
 function Events() {
     
     //creating a use state that can be updated
+    //useState is a react hook
     const [info, getInfo] = useState([]);
     const data = info;
 
     //running usestate to access data from API endpoint
     useEffect(() => {
         ;(async () => {
-            const result = await axios.get('http://localhost:3001')
+            const result = await axios.get('http://localhost:3001/data')
             getInfo(result.data);
         })()
     }, [])
 
-    
+    function postData() {
+        //for axios.post, authorization header can be passed in as third arg.
+        axios.post(
+            "https://jsonplaceholder.typicode.com/posts", 
+            {
+                name: "testing123",
+            },
+            {
+                headers: {
+                'Access-Control-Allow-Origin' : 'http://localhost:3000'
+                }   
+            }
+        )
+        .then(res => console.log(res)).catch(err => console.log(err))
+
+    }
+
+
     return (
         <div>
             <Fragment>
@@ -30,7 +48,7 @@ function Events() {
             <Fragment>
                 <Container maxWidth="md" style={{marginBottom:15}}>
                     <Typography textAlign= "center" variant ="h1">Events List</Typography>
-      
+                    <button onClick={postData}>Test</button>
                 </Container>
             </Fragment>
             <Fragment>

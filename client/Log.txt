@@ -6,7 +6,8 @@ SELECT JSON_ARRAYAGG(JSON_OBJECT('favorite song', favorite_song,'name', name )) 
 
 4/22/23
 We want to use "UseEffect" if there's something we want to bring in right when the page loads
-
+Have to install body parser in order for the Express Post Request to work
+HYPOTHESIS: we have to create specific GET/POST endpoints in order for them to be accessible. Must create through express.js first, then access.
 FUTURE PLANS:
 -pull data from a test database in JSON format to be visible on the frontend.
 -.env variables instead of hard-coded

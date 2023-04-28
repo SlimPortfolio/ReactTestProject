@@ -14,3 +14,7 @@ export async function getData() {
     const [rows] = await pool.query("SELECT * FROM event_data")
     return rows
 }
+
+export async function postData() {
+    await pool
+}
