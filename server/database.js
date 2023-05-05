@@ -23,7 +23,8 @@ const connection = mysql.createConnection({
 }).promise()
 
 export async function postData(title, description) {
-    const sql = "INSERT INTO event_data(event_title, event_description)  VALUES ('" + title + "', '" + description + "')"
+    // const sql = "INSERT INTO event_data(event_title, event_description)  VALUES ('" + title + "', '" + description + "')"
+    const sql = "INSERT INTO event_data(event_title, event_description)  VALUES (" + title + ", " + description + ")"
     connection.query(sql) 
     // connection.query("INSERT INTO event_data(event_title, event_description)  VALUES ('Sean Kingston Concert', 'Mr. Kingston is back to rock the house to the ground')") 
     console.log("post to db successful")   

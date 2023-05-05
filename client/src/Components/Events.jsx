@@ -20,25 +20,6 @@ function Events() {
         })()
     }, [])
 
-    function postData() {
-        //for axios.post, authorization header can be passed in as third arg.
-        axios.post(
-            "http://localhost:3001/post", 
-            {
-                event_title: "Good Morning America",
-                event_description: "Everyone's Favorite News show!",
-            },
-            {
-                headers: {
-                'Access-Control-Allow-Origin' : 'http://localhost:3000'
-                }   
-            }
-        )
-        .then(res => console.log("Result: " + res.data)).catch(err => console.log(err))
-
-    }
-
-
     return (
         <div>
             <Fragment>
@@ -49,7 +30,6 @@ function Events() {
             <Fragment>
                 <Container maxWidth="md" style={{marginBottom:15}}>
                     <Typography textAlign= "center" variant ="h1">Events List</Typography>
-                    <button onClick={postData}>Test</button>
                 </Container>
             </Fragment>
             <Fragment>

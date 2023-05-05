@@ -17,11 +17,10 @@ app.get("/data", async (req, res) => {
 })
 
 app.post('/post', async (req, res) => {
-    let data = req.body;
     res.header("Access-Control-Allow-Origin","http://localhost:3000");
-    res.send("data received: " + JSON.stringify(data));
-    console.log("request from user" + JSON.stringify(req.body.event_title))
-    const newEvent = await postData("Ready Freddy","Winemiller 5k Run")
+    const title = JSON.stringify(req.body.event_title)
+    const description = JSON.stringify(req.body.event_description)
+    const newEvent = await postData(title, description)
     res.send(newEvent)
 })
 

@@ -6,9 +6,14 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import axios from 'axios';
+import { useState } from 'react';
 
 function CreateEvent() {
   const [open, setOpen] = React.useState(false);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -17,6 +22,30 @@ function CreateEvent() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  function gatherTitle() {
+    setTitle(document.getElementById('title').value);
+  }
+  function gatherDescription() {
+    setDescription(document.getElementById('description').value);
+  }
+
+  function postData() {
+    //for axios.post, authorization header can be passed in as third arg.
+    axios.post(
+        "http://localhost:3001/post", 
+        {
+            event_title: title,
+            event_description: description,
+        },
+        {
+            headers: {
+            'Access-Control-Allow-Origin' : 'http://localhost:3000'
+            }   
+        }
+    )
+    .then(res => console.log("Result: " + res.data)).catch(err => console.log(err))
+  }
 
   return (
     <div>
@@ -38,6 +67,7 @@ function CreateEvent() {
             type="text"
             fullWidth
             variant="standard"
+            onChange ={gatherTitle}
           />
           <TextField
             autoFocus
@@ -47,11 +77,12 @@ function CreateEvent() {
             type="text"
             fullWidth
             variant="standard"
+            onChange ={gatherDescription}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Create Event</Button>
+          <Button onClick={() => {postData(); handleClose();}}>Create Event</Button>
         </DialogActions>
       </Dialog>
     </div>
