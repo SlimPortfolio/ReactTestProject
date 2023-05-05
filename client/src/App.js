@@ -4,7 +4,6 @@ import Home from './components/Home';
 import Events from './components/Events';
 import Login from './components/Login';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import axios from 'axios';
 
 function App() {
   return (

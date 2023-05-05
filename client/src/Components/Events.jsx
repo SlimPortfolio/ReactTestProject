@@ -8,18 +8,18 @@ import axios from 'axios';
 function Events() {
     
     //creating a use state that can be updated
+    //useState is a react hook
     const [info, getInfo] = useState([]);
     const data = info;
 
     //running usestate to access data from API endpoint
     useEffect(() => {
         ;(async () => {
-            const result = await axios.get('http://localhost:3001')
+            const result = await axios.get('http://localhost:3001/data')
             getInfo(result.data);
         })()
     }, [])
 
-    
     return (
         <div>
             <Fragment>
@@ -30,7 +30,6 @@ function Events() {
             <Fragment>
                 <Container maxWidth="md" style={{marginBottom:15}}>
                     <Typography textAlign= "center" variant ="h1">Events List</Typography>
-      
                 </Container>
             </Fragment>
             <Fragment>

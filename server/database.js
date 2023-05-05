@@ -15,5 +15,17 @@ export async function getData() {
     return rows
 }
 
-const result = {"title":"Basketball Game","description":"Watch David take down the Gilstads"}
-console.log(result)
+const connection = mysql.createConnection({
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE
+}).promise()
+
+export async function postData(title, description) {
+    // const sql = "INSERT INTO event_data(event_title, event_description)  VALUES ('" + title + "', '" + description + "')"
+    const sql = "INSERT INTO event_data(event_title, event_description)  VALUES (" + title + ", " + description + ")"
+    connection.query(sql) 
+    // connection.query("INSERT INTO event_data(event_title, event_description)  VALUES ('Sean Kingston Concert', 'Mr. Kingston is back to rock the house to the ground')") 
+    console.log("post to db successful")   
+}
