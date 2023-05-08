@@ -1,5 +1,5 @@
 import express from 'express'
-import {getData, postData} from './database.js'
+import {executeLogin, getData, postData} from './database.js'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 
@@ -22,6 +22,14 @@ app.post('/post', async (req, res) => {
     const description = JSON.stringify(req.body.event_description)
     const newEvent = await postData(title, description)
     res.send(newEvent)
+})
+
+app.post('/executeLogin', async (req, res) => {
+    //creates a post API that will take in the request from the front end, so that database function can be run
+    const username = JSON.stringify(req.body.username);
+    const password = JSON.stringify(req.body.password);
+    const logIn = await executeLogin(username,password);
+    res.send(logIn)
 })
 
 app.listen(3001, () => {

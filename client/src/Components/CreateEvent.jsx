@@ -13,12 +13,18 @@ function CreateEvent() {
   const [open, setOpen] = React.useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [success, setSuccess] = React.useState(false);
   
+  const handleOpenSuccess = () => {
+    setSuccess(true);
+  };
+  const handleCloseSuccess = () => {
+    setSuccess(false);
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };
@@ -82,7 +88,18 @@ function CreateEvent() {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={() => {postData(); handleClose();}}>Create Event</Button>
+          <Button onClick={() => {postData(); handleClose(); handleOpenSuccess();}}>Create Event</Button>
+        </DialogActions>
+      </Dialog>
+
+      <Dialog open={success} onClose={handleCloseSuccess}>
+        <DialogContent>
+          <DialogContentText>
+            Event Successfully Created!
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseSuccess}>Close</Button>
         </DialogActions>
       </Dialog>
     </div>

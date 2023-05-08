@@ -1,6 +1,6 @@
 import React from 'react';
 import { Fragment } from "react"
-import TabBar from "./TabBar";
+import TabBar from './TabBar'; 
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -12,6 +12,8 @@ import InputAdornment from '@mui/material/InputAdornment';
 import FormControl from '@mui/material/FormControl';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
+import { useState } from 'react';
+import axios from 'axios';
 
 function Login() {
     const [showPassword, setShowPassword] = React.useState(false);
@@ -21,6 +23,22 @@ function Login() {
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
+
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    function gatherLoginInfo() {
+        setUsername(document.getElementById("username").value)
+        setPassword(document.getElementById("password").value)
+    }
+
+    function submit() {
+        axios.post("http://localhost:3001/executeLogin", {
+            username: username,
+            password: password,
+        })
+        .then(res => console.log("Success!")).catch(err => console.log("error!"))
+    }
 
     return (
         <div>
@@ -48,14 +66,16 @@ function Login() {
                             <OutlinedInput
                                 id="username"
                                 label="Username"
+                                onChange ={gatherLoginInfo}
                             />
                         </FormControl>
                         <br></br>
                         <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
-                            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                            <InputLabel htmlFor="password">Password</InputLabel>
                             <OutlinedInput
-                                id="outlined-adornment-password"
+                                id="password"
                                 type={showPassword ? 'text' : 'password'}
+                                onChange ={gatherLoginInfo}
                                 endAdornment={
                                 <InputAdornment position="end">
                                     <IconButton
@@ -72,7 +92,7 @@ function Login() {
                             />
                         </FormControl>
                         <br></br>
-                        <Button variant ="contained" size ="medium">Submit</Button> 
+                        <Button variant ="contained" size ="medium" onClick={submit}>Submit</Button> 
 
                     </Box>           
                 </Container>

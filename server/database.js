@@ -29,3 +29,14 @@ export async function postData(title, description) {
     // connection.query("INSERT INTO event_data(event_title, event_description)  VALUES ('Sean Kingston Concert', 'Mr. Kingston is back to rock the house to the ground')") 
     console.log("post to db successful")   
 }
+
+export async function executeLogin(username, password) {
+    //database function to check if username/password exists, outputs success or failure in login
+    const sql = "SELECT*FROM users where username = " + username +" AND password = " + password + ";";
+    const [test] = await connection.query(sql);
+    if(test.length > 0) {
+        console.log("login successful")
+    } else {
+        console.log("login failed")
+    }
+}
