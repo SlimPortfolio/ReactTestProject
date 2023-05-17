@@ -15,7 +15,7 @@ import InputLabel from '@mui/material/InputLabel';
 import { useState } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginFalse, loginTrue } from '../redux/loginSlice';
+import { loginFailure, loginSuccess } from '../redux/loginSlice';
 
 function Login() {
     const [showPassword, setShowPassword] = React.useState(false);
@@ -43,7 +43,7 @@ function submit() {
             username: username,
             password: password,
         })
-        .then(res => console.log("Success!")).catch(err => console.log("error!"))
+        .then(res => console.log(res.data)).catch(err => console.log("error!"))
     }
 
 
@@ -100,7 +100,7 @@ function submit() {
                         </FormControl>
                         <br></br>
                         <Button variant ="contained" size ="medium" onClick={submit}>Submit</Button> 
-                        <Button onClick={() => dispatch(loginTrue())}>CLICK ME TO TEST</Button>
+                        <Button onClick={() => dispatch(loginSuccess())}>CLICK ME TO TEST</Button>
                     </Box>           
                 </Container>
             </Fragment>
