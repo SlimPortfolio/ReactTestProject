@@ -14,6 +14,8 @@ import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import { useState } from 'react';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginFalse, loginTrue } from '../redux/loginSlice';
 
 function Login() {
     const [showPassword, setShowPassword] = React.useState(false);
@@ -22,23 +24,28 @@ function Login() {
 
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
+        
     };
+
+    const userIsLoggedIn = useSelector(state => state.loginStatus.value);
+    const dispatch = useDispatch()
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    function gatherLoginInfo() {
+function gatherLoginInfo() {
         setUsername(document.getElementById("username").value)
         setPassword(document.getElementById("password").value)
     }
 
-    function submit() {
+function submit() {
         axios.post("http://localhost:3001/executeLogin", {
             username: username,
             password: password,
         })
         .then(res => console.log("Success!")).catch(err => console.log("error!"))
     }
+
 
     return (
         <div>
@@ -93,7 +100,7 @@ function Login() {
                         </FormControl>
                         <br></br>
                         <Button variant ="contained" size ="medium" onClick={submit}>Submit</Button> 
-
+                        <Button onClick={() => dispatch(loginTrue())}>CLICK ME TO TEST</Button>
                     </Box>           
                 </Container>
             </Fragment>
