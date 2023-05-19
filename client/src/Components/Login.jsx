@@ -46,7 +46,6 @@ function submit() {
         .then(res => {
             if(res.data == true) {
                 dispatch(loginSuccess())
-                console.log("eureka")
             } else {
                 dispatch(loginFailure())
             }
