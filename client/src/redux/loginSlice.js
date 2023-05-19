@@ -8,6 +8,7 @@ export const loginSlice = createSlice({
     reducers: {
         loginSuccess: state => {
             state.value = true;
+            console.log("state has been updated")
         },
 
         loginFailure: state => {

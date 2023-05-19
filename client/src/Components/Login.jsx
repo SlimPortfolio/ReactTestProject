@@ -27,7 +27,7 @@ function Login() {
         
     };
 
-    const userIsLoggedIn = useSelector(state => state.loginStatus.value);
+    const loginStatus = useSelector(state => state.loginStatus.value.toString())
     const dispatch = useDispatch()
 
     const [username, setUsername] = useState("");
@@ -43,9 +43,18 @@ function submit() {
             username: username,
             password: password,
         })
-        .then(res => console.log(res.data)).catch(err => console.log("error!"))
+        .then(res => {
+            if(res.data == true) {
+                dispatch(loginSuccess())
+                console.log("eureka")
+            } else {
+                dispatch(loginFailure())
+            }
+            console.log(res.data)
+        
+        }).catch(err => console.log("error!"))
     }
-
+    
 
     return (
         <div>
@@ -100,7 +109,7 @@ function submit() {
                         </FormControl>
                         <br></br>
                         <Button variant ="contained" size ="medium" onClick={submit}>Submit</Button> 
-                        <Button onClick={() => dispatch(loginSuccess())}>CLICK ME TO TEST</Button>
+                        <span>login status is: {loginStatus}</span>
                     </Box>           
                 </Container>
             </Fragment>
