@@ -30,6 +30,7 @@ app.post('/executeLogin', async (req, res) => {
     const password = JSON.stringify(req.body.password);
     const logIn = await executeLogin(username,password);
     res.send(logIn)
+    console.log(logIn);
 })
 
 app.listen(3001, () => {

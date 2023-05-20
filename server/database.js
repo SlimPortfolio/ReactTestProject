@@ -1,5 +1,6 @@
 import mysql from 'mysql2'
 import dotenv from 'dotenv'
+
 dotenv.config()
 
 const pool = mysql.createPool({
@@ -36,7 +37,9 @@ export async function executeLogin(username, password) {
     const [test] = await connection.query(sql);
     if(test.length > 0) {
         console.log("login successful")
+        return true;
     } else {
         console.log("login failed")
+        return false;
     }
 }
