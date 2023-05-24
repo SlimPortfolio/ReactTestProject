@@ -38,7 +38,6 @@ function LoginSuccessful() {
                     >
                         <h1>You are logged in!</h1>
                         <p>Please click on the events tab to create and view events!</p>                        
-                        <span>login status is: {loginStatus}</span>
                     </Box>           
                 </Container>
             </Fragment>
