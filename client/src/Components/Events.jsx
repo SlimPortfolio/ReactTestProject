@@ -4,12 +4,14 @@ import EventCard from "./EventCard";
 import { Container, Typography } from "@mui/material";
 import CreateEvent from './CreateEvent';
 import axios from 'axios';
+import { useSelector } from "react-redux";
 
 function Events() {
     //creating a use state that can be updated
     //useState is a react hook
     const [info, getInfo] = useState([]);
     const data = info;
+    const loginStatus = useSelector(state => state.loginStatus.value)
     //running usestate to access data from API endpoint
     useEffect(() => {
         ;(async () => {
@@ -32,7 +34,9 @@ function Events() {
             </Fragment>
             <Fragment>
                 <Container align="center">
-                <CreateEvent />
+                {/* add react conditional rendering to only show create event component if user has logged in */}
+                {loginStatus && <CreateEvent />}
+                
                     <Container style={{marginTop:15}}>
                         {data.map((item) => (
                             <EventCard 
