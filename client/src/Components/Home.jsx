@@ -13,8 +13,10 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import LoginIcon from "@mui/icons-material/Login";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import { useSelector } from "react-redux";
 
 function Home() {
+    const loginStatus = useSelector(state => state.loginStatus.value)
     return (
         <div>
             <header>
@@ -40,7 +42,9 @@ function Home() {
                     <Typography textAlign= "center">Keep track of your events easily! Log in or create an account!</Typography>
                     {/* Create a log in button Here */}
                     <Container align="center" style={{marginTop:15}}>
-                        <Button variant ="contained" size ="medium" endIcon={<KeyboardArrowRightIcon />} href="/login">Log In</Button>
+                        {
+                            !loginStatus && <Button variant ="contained" size ="medium" endIcon={<KeyboardArrowRightIcon />} href="/login">Log In</Button>
+                        }
                     </Container>      
                 </Container>
             </Fragment>

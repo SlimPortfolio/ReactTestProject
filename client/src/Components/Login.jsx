@@ -16,6 +16,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginFailure, loginSuccess } from '../redux/loginSlice';
+import LoginSuccessful from './LoginSuccessful';
 
 function Login() {
     const [showPassword, setShowPassword] = React.useState(false);
@@ -27,18 +28,18 @@ function Login() {
         
     };
 
-    const loginStatus = useSelector(state => state.loginStatus.value.toString())
+    const loginStatus = useSelector(state => state.loginStatus.value)
     const dispatch = useDispatch()
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-function gatherLoginInfo() {
+    function gatherLoginInfo() {
         setUsername(document.getElementById("username").value)
         setPassword(document.getElementById("password").value)
     }
 
-function submit() {
+    function submit() {
         axios.post("http://localhost:3001/executeLogin", {
             username: username,
             password: password,
@@ -53,67 +54,69 @@ function submit() {
         
         }).catch(err => console.log("error!"))
     }
-    
+        
+    if(loginStatus == false) {
+        return (
+            <div>
+                <Fragment>
+                    <header>
+                        <TabBar tabValue={2}/>
+                    </header>
+                </Fragment>
+            
 
-    return (
-        <div>
-            <Fragment>
-                <header>
-                    <TabBar tabValue={2}/>
-                </header>
-            </Fragment>
-           
-
-            <Fragment>
-                <CssBaseline />
-                <Container align="center">
-                    <Box
-                        component="form"
-                        sx={{
-                            '& > :not(style)': { m: 1, width: '25ch' },
-                        }}
-                        noValidate
-                        autoComplete="off"
-                    >
-                        <h1>Log-In</h1>                        
-                        <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
-                            <InputLabel htmlFor="username">Username</InputLabel>
-                            <OutlinedInput
-                                id="username"
-                                label="Username"
-                                onChange ={gatherLoginInfo}
-                            />
-                        </FormControl>
-                        <br></br>
-                        <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
-                            <InputLabel htmlFor="password">Password</InputLabel>
-                            <OutlinedInput
-                                id="password"
-                                type={showPassword ? 'text' : 'password'}
-                                onChange ={gatherLoginInfo}
-                                endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton
-                                    aria-label="toggle password visibility"
-                                    onClick={handleClickShowPassword}
-                                    onMouseDown={handleMouseDownPassword}
-                                    edge="end"
-                                    >
-                                    {showPassword ? <VisibilityOff /> : <Visibility />}
-                                    </IconButton>
-                                </InputAdornment>
-                                }
-                                label="Password"
-                            />
-                        </FormControl>
-                        <br></br>
-                        <Button variant ="contained" size ="medium" onClick={submit}>Submit</Button> 
-                        <span>login status is: {loginStatus}</span>
-                    </Box>           
-                </Container>
-            </Fragment>
-        </div>  
-    )
+                <Fragment>
+                    <CssBaseline />
+                    <Container align="center">
+                        <Box
+                            component="form"
+                            sx={{
+                                '& > :not(style)': { m: 1, width: '25ch' },
+                            }}
+                            noValidate
+                            autoComplete="off"
+                        >
+                            <h1>Log-In</h1>                        
+                            <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+                                <InputLabel htmlFor="username">Username</InputLabel>
+                                <OutlinedInput
+                                    id="username"
+                                    label="Username"
+                                    onChange ={gatherLoginInfo}
+                                />
+                            </FormControl>
+                            <br></br>
+                            <FormControl sx={{ m: 1, width: '25ch' }} variant="outlined">
+                                <InputLabel htmlFor="password">Password</InputLabel>
+                                <OutlinedInput
+                                    id="password"
+                                    type={showPassword ? 'text' : 'password'}
+                                    onChange ={gatherLoginInfo}
+                                    endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                        aria-label="toggle password visibility"
+                                        onClick={handleClickShowPassword}
+                                        onMouseDown={handleMouseDownPassword}
+                                        edge="end"
+                                        >
+                                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                                        </IconButton>
+                                    </InputAdornment>
+                                    }
+                                    label="Password"
+                                />
+                            </FormControl>
+                            <br></br>
+                            <Button variant ="contained" size ="medium" onClick={submit}>Submit</Button> 
+                        </Box>           
+                    </Container>
+                </Fragment>
+            </div>  
+        )
+    } else {
+        return (<LoginSuccessful />)
+    }    
 }
 
 export default Login;
