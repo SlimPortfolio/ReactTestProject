@@ -6,12 +6,10 @@ import CreateEvent from './CreateEvent';
 import axios from 'axios';
 
 function Events() {
-    
     //creating a use state that can be updated
     //useState is a react hook
     const [info, getInfo] = useState([]);
     const data = info;
-
     //running usestate to access data from API endpoint
     useEffect(() => {
         ;(async () => {
