@@ -13,9 +13,13 @@ export const loginSlice = createSlice({
 
         loginFailure: state => {
             state.value = false;  
+        },
+
+        logoutUser: state => {
+            state.value = false;
         }
     }
 })
 
-export const {loginSuccess, loginFailure} = loginSlice.actions
+export const {loginSuccess, loginFailure, logoutUser} = loginSlice.actions
 export default loginSlice.reducer;

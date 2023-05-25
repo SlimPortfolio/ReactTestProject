@@ -46,7 +46,6 @@ function Events() {
                     </Container>
                 }
                         
-                
                 {loginStatus && <CreateEvent />}
                 {loginStatus && 
                     <Container style={{marginTop:15}}>

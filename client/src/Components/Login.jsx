@@ -15,7 +15,7 @@ import InputLabel from '@mui/material/InputLabel';
 import { useState } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginFailure, loginSuccess } from '../redux/loginSlice';
+import { loginFailure, loginSuccess, logoutUser } from '../redux/loginSlice';
 import LoginSuccessful from './LoginSuccessful';
 
 function Login() {
@@ -54,7 +54,11 @@ function Login() {
         
         }).catch(err => console.log("error!"))
     }
-        
+    
+    function logout() {
+        dispatch(logoutUser())
+    }
+
     if(loginStatus == false) {
         return (
             <div>
